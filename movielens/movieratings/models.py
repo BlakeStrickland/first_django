@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Rater(models.Model):
-    user_id = models.IntegerField()
-    age = models.IntegerField()
+    user_id = models.IntegerField(default=0)
+    age = models.IntegerField(default=0)
     gender = models.CharField(max_length=140, default='DEFAULT VALUE', blank=True, null=True)
     occupation = models.CharField(max_length=140, default='DEFAULT VALUE', blank=True, null=True)
     zip_code = models.CharField(max_length=140, default='DEFAULT VALUE', blank=True, null=True)
@@ -14,7 +14,7 @@ class Rater(models.Model):
 
 
 class Movie(models.Model):
-    movie_id = models.IntegerField()
+    movie_id = models.IntegerField(default=0)
     title = models.CharField(max_length=140, default='DEFAULT VALUE', blank=True, null=True)
 
     def __str__(self):
@@ -22,10 +22,9 @@ class Movie(models.Model):
 
 
 class Rating(models.Model):
-    user_id = models.IntegerField()
-    movie_id = models.IntegerField()
+    user_id = models.IntegerField(default=0)
+    movie_id = models.IntegerField(default=0)
     rating = models.CharField(max_length=140, default='DEFAULT VALUE', blank=True, null=True)
-    timestamp = models.DateTimeField(auto_now=False, auto_now_add=False)
-    
+
     def __str__(self):
         return str(self.user_id + " " + self.movie_id + " " + self.rating)

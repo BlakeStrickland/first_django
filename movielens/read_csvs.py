@@ -17,18 +17,20 @@ def main():
             rater.save()
 
 
-    # with open("ml-100k/u.data") as item_file:
-    #     reader = csv.DictReader(item_file, delimiter='\t', fieldnames=['user_id', 'movie_id', 'rating'])
-    #     for row in reader:
-    #         rated = Rating(user_id=row['user_id'], movie_id=row['movie_id'], rating=row['rating'])
-    #         rated.save()
-    #
-    #
-    # with open('ml-100k/u.item', encoding="latin_1") as item_file:
-    #     reader = csv.DictReader(item_file, delimiter='|', fieldnames=['movie_id', 'title'])
-    #     for row in reader:
-    #         movie =  Movie(title=row['title'], movie_id=row['movie_id'])
-    #         movie.save()
+    with open("ml-100k/u.data") as item_file:
+        reader = csv.DictReader(item_file, delimiter='\t', fieldnames=['user_id', 'movie_id', 'rating'])
+        for row in reader:
+            rated = Rating(user_id=row['user_id'], movie_id=row['movie_id'], rating=row['rating'])
+            rated.save()
+
+    
+    with open('ml-100k/u.item', encoding="latin_1") as item_file:
+        reader = csv.DictReader(item_file, delimiter='|', fieldnames=['movie_id', 'title'])
+        for row in reader:
+            movie =  Movie(title=row['title'], movie_id=row['movie_id'])
+            movie.save()
+
+
 
 if __name__ == '__main__':
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "movielens.settings")
